@@ -38,14 +38,14 @@ export default {
         deleteTaskTC(id){
         //    const todoRef = firebase.database().ref("todo").child(id);
         //    todoRef.remove();
-            this.$parent.$emit('deleteTask', id);
+            this.$emit('deleteTask', id);
         },
         isCompletedTC(id){
             // const todoRef = firebase.database().ref("todo").child(id);
             // todoRef.update({
             //     completed: !todoRef.completed,
             // })
-            this.$parent.$emit('isCompleted', id);
+            this.$emit('isCompleted', id);
         }
     }
 }
