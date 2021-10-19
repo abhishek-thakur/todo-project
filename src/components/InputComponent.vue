@@ -2,7 +2,7 @@
     <div class="container">
         <div>
             <input 
-                v-model="task" 
+                v-model="Task" 
                 type="text" 
                 placeholder="enter the task" 
                 class="form-control"
@@ -26,47 +26,30 @@
                 <th>Delete</th>
             </thead>
             <tbody>
-                <tr v-for="(task, index) in tasks" :key="index">
-                    <td><span :class="{'finished': task.completed == true}">{{task.name}}</span></td>
-                    <td>
-                        <div class="pointer" @click="isCompleted(index)">
-                            <span :class="{'fas fa-check':task.completed, 'fas fa-hourglass-half':!task.completed }"></span>
-                        </div>
-                    </td>
-                    <td>
-                        <div @click="editTask(task.id)" class="pointer">
-                            <span class="fas fa-pen-fancy"></span>
-                        </div>
-                    </td>
-                    <td>
-                        <div @click="deleteTask(task.id)" class="pointer">
-                            <span class="fas fa-trash-alt"></span>
-                        </div>
-                    </td>
-                </tr>
+                <task-component v-for="(task, index) in tasks" :key="index" :task="task"></task-component>
             </tbody>
         </table>
     </div>
 </template>
 
 <script>
+import TaskComponent from '../views/TaskComponent.vue'
 import firebase from '@/firebaseApi.js'
 export default {
     name: 'InputComponent',
+    components:{
+        TaskComponent
+    },
     data(){
         return{
-            task:"",
+            Task:"",
             tasks:[]
         }
     },
     computed:{
         isDisabled(){
-            return this.task.length == 0;
-        },
-        // isCompleted(index){
-        //     alert("changing")
-        //     return this.task[index].completed = !this.task[index].completed;
-        // }
+            return this.Task.length == 0;
+        }
     },
     methods:{
         submitTask(){
@@ -92,6 +75,12 @@ export default {
            const todoRef = firebase.database().ref("todo").child(id);
            todoRef.remove();
         },
+        isCompleted(id){
+            const todoRef = firebase.database().ref("todo").child(id);
+            todoRef.update({
+                completed: !todoRef.completed,
+            })
+        },
         getTodos(){
             const todoRef = firebase.database().ref("todo");
             var vm = this;
@@ -109,7 +98,6 @@ export default {
         }
     },
     mounted(){
-        //const todoRef = firebase.database().ref('todo');
         this.getTodos();
     }
 }
