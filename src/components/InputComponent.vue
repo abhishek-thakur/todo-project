@@ -26,7 +26,11 @@
                 <th>Delete</th>
             </thead>
             <tbody>
-                <task-component v-for="(task, index) in tasks" :key="index" :task="task"></task-component>
+                <task-component 
+                    v-for="(task, index) in tasks" :key="index" :task="task"
+                    @editTask="editTask" @deleteTask="deleteTask" @isCompleted="isCompleted"
+                >
+                </task-component>
             </tbody>
         </table>
     </div>
@@ -55,27 +59,30 @@ export default {
         submitTask(){
             const todoRef = firebase.database().ref("todo");
             const task = {
-                name : this.task,
+                name : this.Task,
                 completed: false
             }
             todoRef.push(task);
-            this.task= "";
+            this.Task= "";
         },
         editTask(id){
            // this.task = this.tasks[index].name;
+           //alert("from ip component");
            const todoRef = firebase.database().ref("todo").child(id);
            todoRef.update({
-               name: this.task
+               name: this.Task
            });
-           this.task = "";
+           this.Task = "";
 
         },
         deleteTask(id){
            // this.tasks.splice(index, 1)
+           //alert("from ip component");
            const todoRef = firebase.database().ref("todo").child(id);
            todoRef.remove();
         },
         isCompleted(id){
+            //alert("from ip component");
             const todoRef = firebase.database().ref("todo").child(id);
             todoRef.update({
                 completed: !todoRef.completed,
