@@ -22,7 +22,6 @@
 
 </template>
 <script>
-//import firebase from '@/firebaseApi.js'
 export default {
     name: 'TaskComponent',
     props: ['task'],
