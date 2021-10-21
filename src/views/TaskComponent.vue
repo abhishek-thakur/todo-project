@@ -15,10 +15,10 @@
     </td>
     <td>
       <div class="pointer">
-        <b-button v-b-modal.modal-prevent-closing><span class="fas fa-pen-fancy"></span></b-button>
+        <b-button @click="showModal"><span class="fas fa-pen-fancy"></span></b-button>
       </div>
-      <b-modal id="modal-prevent-closing"
-        ref="modal"
+      <b-modal
+        ref="my-modal"
         title="Update the Task"
         @ok="editTaskTC(task.id)" centered
       >
@@ -45,6 +45,10 @@ export default {
   },
   props: ["task"],
   methods: {
+    showModal(id) {
+        this.$refs['my-modal'].show();
+        return id;
+      },
       // handleOk(bvModalEvt) {
       //   bvModalEvt.preventDefault()
       //   this.handleSubmit()
