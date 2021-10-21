@@ -15,7 +15,7 @@
     </td>
     <td>
       <div class="pointer">
-        <b-button @click="showModal"><span class="fas fa-pen-fancy"></span></b-button>
+        <div @click="showModal"><span class="fas fa-pen-fancy"></span></div>
       </div>
       <b-modal
         ref="my-modal"
