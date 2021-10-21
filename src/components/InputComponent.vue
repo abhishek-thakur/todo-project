@@ -65,12 +65,12 @@ export default {
             todoRef.push(task);
             this.Task= "";
         },
-        editTask(id){
+        editTask(id,newTask){
            // this.task = this.tasks[index].name;
            //alert("from ip component");
            const todoRef = firebase.database().ref("todo").child(id);
            todoRef.update({
-               name: this.Task
+               name: newTask
            });
            this.Task = "";
 

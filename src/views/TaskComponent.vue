@@ -49,24 +49,12 @@ export default {
         this.$refs['my-modal'].show();
         return id;
       },
-      // handleOk(bvModalEvt) {
-      //   bvModalEvt.preventDefault()
-      //   this.handleSubmit()
-      // },
-      // handleSubmit() {
-      //   if (this.upTask.length == 0) {
-      //     return
-      //   }
-      //   this.$nextTick(() => {
-      //     this.$bvModal.hide('modal-prevent-closing')
-      //   })
-      // },
     editTaskTC(id) {
       //alert("editing")
       if (this.upTask.length == 0) {
           return
         }
-        this.$emit("editTask",id);
+        this.$emit("editTask",id,this.upTask);
         this.$nextTick(() => {
           this.$bvModal.hide('modal-prevent-closing')
         })
