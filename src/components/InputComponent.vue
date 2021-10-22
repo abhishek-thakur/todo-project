@@ -24,6 +24,7 @@
                 <th>Status</th>
                 <th>Update</th>
                 <th>Delete</th>
+                <th>#</th>
             </thead>
             <tbody>
                 <task-component 
@@ -116,6 +117,6 @@ export default {
 }
 .finished{
     text-decoration: line-through;
-    color: green;
+font-weight: bold;
 }
 </style>

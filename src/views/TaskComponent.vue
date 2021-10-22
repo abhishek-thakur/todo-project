@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr ref="bgRow">
     <td>
       <span :class="{ finished: task.completed == true }">{{ task.name }}</span>
     </td>
@@ -33,6 +33,14 @@
         <span class="fas fa-trash-alt"></span>
       </div>
     </td>
+    <td>
+      <select name="color">
+        <option value="white" active>white</option>
+        <option value="blue">blue</option>
+        <option value="green">green</option>
+        <option value="red">red</option>
+      </select>
+    </td>
   </tr>
 </template>
 <script>
@@ -45,12 +53,10 @@ export default {
   },
   props: ["task"],
   methods: {
-    showModal(id) {
+    showModal() {
         this.$refs['my-modal'].show();
-        return id;
       },
     editTaskTC(id) {
-      //alert("editing")
       if (this.upTask.length == 0) {
           return
         }
@@ -60,13 +66,18 @@ export default {
         })
     },
     deleteTaskTC(task) {
-      //alert("deleting");
       this.$emit("deleteTask", task.id);
     },
     isCompletedTC(task) {
-      //alert("completed");
       this.$emit("isCompleted", task.id);
     },
   },
+  // mounted(){
+  //   document.querySelector('select').onchange=changeEventHandler;
+
+  //   function changeEventHandler() {
+  //     this.$refs['bgRow'].style.backgroundcolor = this.value;
+  //   }
+  // }
 };
 </script>
