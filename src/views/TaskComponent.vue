@@ -1,5 +1,5 @@
 <template>
-  <tr ref="bgRow">
+  <tr :style="{'background': task.category}">
     <td>
       <span :class="{ finished: task.completed == true }">{{ task.name }}</span>
     </td>
@@ -34,8 +34,8 @@
       </div>
     </td>
     <td>
-      <select name="color">
-        <option value="white" active>white</option>
+      <select v-model="task.category">
+        <option value="white">default</option>
         <option value="blue">blue</option>
         <option value="green">green</option>
         <option value="red">red</option>
@@ -70,14 +70,7 @@ export default {
     },
     isCompletedTC(task) {
       this.$emit("isCompleted", task.id);
-    },
-  },
-  // mounted(){
-  //   document.querySelector('select').onchange=changeEventHandler;
-
-  //   function changeEventHandler() {
-  //     this.$refs['bgRow'].style.backgroundcolor = this.value;
-  //   }
-  // }
+    }
+  }
 };
 </script>

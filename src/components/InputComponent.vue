@@ -24,7 +24,7 @@
                 <th>Status</th>
                 <th>Update</th>
                 <th>Delete</th>
-                <th>#</th>
+                <th>Category</th>
             </thead>
             <tbody>
                 <task-component 
@@ -61,7 +61,8 @@ export default {
             const todoRef = firebase.database().ref("todo");
             const task = {
                 name : this.Task,
-                completed: false
+                completed: false,
+                category :""
             }
             todoRef.push(task);
             this.Task= "";
@@ -89,6 +90,12 @@ export default {
                 completed: !todoRef.completed,
             })
         },
+        // changeBg(id, newCat){
+        //     const todoRef = firebase.database().ref("todo").child(id);
+        //     todoRef.update({
+        //         category : newCat
+        //     })
+        // },
         getTodos(){
             const todoRef = firebase.database().ref("todo");
             var vm = this;
@@ -99,6 +106,7 @@ export default {
                     vm.tasks.push({
                         name : todos[id].name,
                         completed: todos[id].completed,
+                        category: todos[id].category,
                         id: id
                     });
                 }
