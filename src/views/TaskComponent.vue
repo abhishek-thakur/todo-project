@@ -1,5 +1,5 @@
 <template>
-  <tr :style="{'background': task.category}">
+  <tr :style="{'background': upCategory}">
     <td>
       <span :class="{ finished: task.completed == true }">{{ task.name }}</span>
     </td>
@@ -34,7 +34,7 @@
       </div>
     </td>
     <td>
-      <select v-model="task.category">
+      <select v-model="upCategory">
         <option value="white">default</option>
         <option value="blue">blue</option>
         <option value="green">green</option>
@@ -48,7 +48,8 @@ export default {
   name: "TaskComponent",
   data() {
     return {
-      upTask:this.task.name
+      upTask:this.task.name,
+      upCategory: this.task.category
     };
   },
   props: ["task"],
