@@ -29,7 +29,7 @@
             <tbody>
                 <task-component 
                     v-for="(task, index) in tasks" :key="index" :task="task"
-                    @editTask="editTask" @deleteTask="deleteTask" @isCompleted="isCompleted"
+                    @editTask="editTask" @deleteTask="deleteTask" @isCompleted="isCompleted" @changeBg = "changeBg"
                 >
                 </task-component>
             </tbody>
@@ -62,7 +62,7 @@ export default {
             const task = {
                 name : this.Task,
                 completed: false,
-                category :""
+                category :"white"
             }
             todoRef.push(task);
             this.Task= "";
@@ -90,12 +90,12 @@ export default {
                 completed: !todoRef.completed,
             })
         },
-        // changeBg(id, newCat){
-        //     const todoRef = firebase.database().ref("todo").child(id);
-        //     todoRef.update({
-        //         category : newCat
-        //     })
-        // },
+        changeBg(id, newCat){
+            const todoRef = firebase.database().ref("todo").child(id);
+            todoRef.update({
+                category : newCat
+            })
+        },
         getTodos(){
             const todoRef = firebase.database().ref("todo");
             var vm = this;

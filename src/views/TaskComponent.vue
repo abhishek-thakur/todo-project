@@ -34,7 +34,7 @@
       </div>
     </td>
     <td>
-      <select v-model="upCategory">
+      <select v-model="upCategory" v-on:change="changeCat(task.id)">
         <option value="white">default</option>
         <option value="blue">blue</option>
         <option value="green">green</option>
@@ -65,6 +65,9 @@ export default {
         this.$nextTick(() => {
           this.$bvModal.hide('modal-prevent-closing')
         })
+    },
+    changeCat(id){
+      this.$emit("changeBg",id,this.upCategory)
     },
     deleteTaskTC(task) {
       this.$emit("deleteTask", task.id);
