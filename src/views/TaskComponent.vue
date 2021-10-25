@@ -1,4 +1,5 @@
 <template>
+  <!-- binding style to change the bg color according to category -->
   <tr :style="{'background': upCategory}">
     <td>
       <span :class="{ finished: task.completed == true }">{{ task.name }}</span>
@@ -14,9 +15,11 @@
       </div>
     </td>
     <td>
+      <!-- changing taskname using modal -->
       <div class="pointer">
         <div @click="showModal"><span class="fas fa-pen-fancy"></span></div>
       </div>
+      <!-- modal for updating the taskname -->
       <b-modal
         ref="my-modal"
         title="Update the Task"
@@ -33,6 +36,7 @@
         <span class="fas fa-trash-alt"></span>
       </div>
     </td>
+    <!-- dropdown for category -->
     <td>
       <select v-model="upCategory" v-on:change="changeCat(task.id)">
         <option value="white">default</option>
@@ -54,9 +58,11 @@ export default {
   },
   props: ["task"],
   methods: {
+    //to show modal
     showModal() {
         this.$refs['my-modal'].show();
-      },
+    },
+    //emitting taskname to inputComponent
     editTaskTC(id) {
       if (this.upTask.length == 0) {
           return
@@ -66,12 +72,18 @@ export default {
           this.$bvModal.hide('modal-prevent-closing')
         })
     },
+
+    //emitting category, to change category
     changeCat(id){
       this.$emit("changeBg",id,this.upCategory)
     },
+
+    //emitting task id to deleteTask of inputComponent
     deleteTaskTC(task) {
       this.$emit("deleteTask", task.id);
     },
+
+    //emitting task.id, to change the status
     isCompletedTC(task) {
       this.$emit("isCompleted", task.id);
     }

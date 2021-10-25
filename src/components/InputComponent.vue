@@ -57,6 +57,7 @@ export default {
         }
     },
     methods:{
+        //to add new task in todo list
         submitTask(){
             const todoRef = firebase.database().ref("todo");
             const task = {
@@ -67,6 +68,8 @@ export default {
             todoRef.push(task);
             this.Task= "";
         },
+
+        //to edit task name of task
         editTask(id,newTask){
            // this.task = this.tasks[index].name;
            //alert("from ip component");
@@ -77,12 +80,16 @@ export default {
            this.Task = "";
 
         },
+
+        //to delete the task from todo list
         deleteTask(id){
            // this.tasks.splice(index, 1)
            //alert("from ip component");
            const todoRef = firebase.database().ref("todo").child(id);
            todoRef.remove();
         },
+
+        //to change the status of the task
         isCompleted(id){
             //alert("from ip component");
             const todoRef = firebase.database().ref("todo").child(id);
@@ -90,12 +97,16 @@ export default {
                 completed: !todoRef.completed,
             })
         },
+        
+        //to change the bgcolor of the row
         changeBg(id, newCat){
             const todoRef = firebase.database().ref("todo").child(id);
             todoRef.update({
                 category : newCat
             })
         },
+
+        // to get the task from database
         getTodos(){
             const todoRef = firebase.database().ref("todo");
             var vm = this;
@@ -113,6 +124,8 @@ export default {
             });
         }
     },
+
+    //to render table from the database
     mounted(){
         this.getTodos();
     }
