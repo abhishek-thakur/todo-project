@@ -48,8 +48,14 @@
   </tr>
 </template>
 <script>
+// import BarGraph from './BarGraph.vue'
+// import PieChart from './PieChart.vue'
 export default {
   name: "TaskComponent",
+  // components:{
+  //   BarGraph,
+  //   PieChart
+  // },
   data() {
     return {
       upTask:this.task.name,

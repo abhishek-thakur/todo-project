@@ -34,16 +34,23 @@
                 </task-component>
             </tbody>
         </table>
+        <!-- <bar-graph></bar-graph> -->
+        <pie-chart-container></pie-chart-container>
     </div>
 </template>
 
 <script>
 import TaskComponent from '../views/TaskComponent.vue'
 import firebase from '@/firebaseApi.js'
+import PieChartContainer from '../views/PieChartContainer.vue'
+//import BarGraph from '../views/BarGraph.vue'
+
 export default {
     name: 'InputComponent',
     components:{
-        TaskComponent
+        TaskComponent,
+        PieChartContainer,
+        
     },
     data(){
         return{
