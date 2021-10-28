@@ -30,7 +30,8 @@ export default {
     try {
         const todoRef = firebase.database().ref("todo");
         todoRef.on("value",(snapshot)=>{
-            var category = snapshot.category;
+            var todos = snapshot.val();
+            var category = todos.category;
             this.chartdata = category;
         })
       this.loaded = true
