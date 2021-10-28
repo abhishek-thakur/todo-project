@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <h3>Pie Chart </h3>
         <pie-chart
             v-if="loaded"
             :chartData="chartData"
@@ -31,8 +32,13 @@ export default {
         const todoRef = firebase.database().ref("todo");
         todoRef.on("value",(snapshot)=>{
             var todos = snapshot.val();
-            var category = todos.category;
-            this.chartdata = category;
+            console.log(Object.keys(todos));
+            var category =[];
+            for(let value of Object.values(todos)){
+                var cat = value.category;
+                category.push(cat);
+            }
+            console.log(category);
         })
       this.loaded = true
     } catch (e) {
