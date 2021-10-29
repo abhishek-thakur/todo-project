@@ -33,17 +33,27 @@ export default {
         todoRef.on("value",(snapshot)=>{
             var todos = snapshot.val();
             //console.log(Object.keys(todos));
-            var category =[];
+            var categoryArr =[];
             for(let value of Object.values(todos)){
                 var cat = value.category;
-                category.push(cat);
+                categoryArr.push(cat);
             }
-            console.log(category);
-            const counts = {};
-            category.forEach((x)=>{
-                counts[x] =(counts[x] || 0)+1;
+            console.log(categoryArr);
+            const category = {};
+            categoryArr.forEach((x)=>{
+                category[x] =(category[x] || 0)+1;
             });
-            console.log(counts)
+            console.log(category);
+            var catKey=[];
+            for(let key of Object.keys(category)){
+                catKey.push(key)
+            }
+            console.log(catKey);
+            var catCount=[];
+            for(let value of Object.values(category)){
+                catCount.push(value);
+            }
+            console.log(catCount);
         });
         this.loaded = true
     } catch (e) {

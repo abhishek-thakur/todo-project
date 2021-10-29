@@ -144,7 +144,7 @@ export default {
     cursor: pointer;
 }
 .finished{
-    text-decoration: line-through;
+text-decoration: line-through;
 font-weight: bold;
 }
 </style>
