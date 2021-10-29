@@ -32,15 +32,20 @@ export default {
         const todoRef = firebase.database().ref("todo");
         todoRef.on("value",(snapshot)=>{
             var todos = snapshot.val();
-            console.log(Object.keys(todos));
+            //console.log(Object.keys(todos));
             var category =[];
             for(let value of Object.values(todos)){
                 var cat = value.category;
                 category.push(cat);
             }
             console.log(category);
-        })
-      this.loaded = true
+            const counts = {};
+            category.forEach((x)=>{
+                counts[x] =(counts[x] || 0)+1;
+            });
+            console.log(counts)
+        });
+        this.loaded = true
     } catch (e) {
       console.error(e)
     }
