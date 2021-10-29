@@ -2,18 +2,22 @@
 import { Doughnut } from "vue-chartjs";
 export default {
   extends: Doughnut,
-  props: ["data", "options"],
-  // methods:{
-  //   showPie(){
-  //       this.renderChart(this.data, {
-  //       borderWidth: "10px",
-  //       hoverBackgroundColor: "red",
-  //       hoverBorderWidth: "10px"
-  //       });
-  //   }
-  // }
+  props: {
+    chartdata: {
+      type: Object,
+      default: null
+    },
+    options: {
+      type: Object,
+      default: null
+    }
+  },
   mounted() {
-    this.renderChart(this.data, );
+    this.renderChart(this.data, {
+      borderWidth: "10px",
+      hoverBackgroundColor: "red",
+      hoverBorderWidth: "10px"
+    });
   }
 }
 </script>

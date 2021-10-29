@@ -55,7 +55,7 @@ export default {
             }
             console.log(catCount);
         });
-        this.loaded = true
+        this.loaded = true;
     } catch (e) {
       console.error(e)
     }
