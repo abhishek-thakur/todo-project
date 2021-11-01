@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container bg-secondary">
     <h3>Pie Chart</h3>
     <pie-chart
       v-if="loaded"
