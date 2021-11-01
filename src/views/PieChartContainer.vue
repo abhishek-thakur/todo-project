@@ -37,17 +37,12 @@ export default {
           "rgba(255, 206, 86, 1)",
           "rgba(75, 192, 192, 1)",
         ],
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-        ],
-        labels: null,
-        dataSet: [
+        
+        labels: [],
+        datasets: [
           {
             label: "data one",
-            backgroundColor: "#f87979",
+            backgroundColor:[],
             data: null,
           },
         ],
@@ -76,13 +71,14 @@ export default {
         catKey.push(key);
       }
       this.chartData.labels = catKey;
+      this.chartData.datasets[0].backgroundColor= catKey;
       console.log(catKey);
       var catCount = [];
       for (let value of Object.values(category)) {
         catCount.push(value);
       }
       console.log(catCount);
-      this.chartData.dataSet[0].data = catCount;
+      this.chartData.datasets[0].data = catCount;
     });
     this.loaded = true;
   },
