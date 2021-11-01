@@ -3,6 +3,7 @@
     <h3>Pie Chart</h3>
     <pie-chart
       v-if="loaded"
+      :key="componentKey"
       :chartData="chartData"
       :options="options"
     ></pie-chart>
@@ -18,6 +19,7 @@ export default {
   data() {
     return {
       loaded: false,
+      componentKey: 0,
       options: {
         legend: {
           display: true,
@@ -26,6 +28,11 @@ export default {
         maintainAspectRatio: false,
       },
     };
+  },
+  methods:{
+    forceRerender() {
+      this.componentKey += 1;
+    }
   },
   computed: {
     chartData() {
@@ -72,6 +79,7 @@ export default {
       //console.log(catCount);
       this.chartData.datasets[0].data = catCount;
       this.loaded = true;
+      this.forceRerender();
       // this.$nextTick(function(){
       //   this.$forceUpdate();
       // })
