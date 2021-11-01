@@ -1,9 +1,9 @@
 <script>
-import { Doughnut } from "vue-chartjs";
+import {Pie} from "vue-chartjs";
 export default {
-  extends: Doughnut,
+  extends: Pie,
   props: {
-    chartdata: {
+    chartData: {
       type: Object,
       default: null
     },
@@ -13,11 +13,7 @@ export default {
     }
   },
   mounted() {
-    this.renderChart(this.data, {
-      borderWidth: "10px",
-      hoverBackgroundColor: "red",
-      hoverBorderWidth: "10px"
-    });
+    this.renderChart(this.chartData, this.options);
   }
 }
 </script>
