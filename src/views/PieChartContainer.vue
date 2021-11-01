@@ -1,5 +1,5 @@
 <template>
-  <div class="container bg-secondary">
+  <div class="container" style="background-color:rgba(197, 227, 77)">
     <h3>Pie Chart</h3>
     <pie-chart
       v-if="loaded"
@@ -31,13 +31,6 @@ export default {
     chartData() {
       return {
         borderWidth: 1,
-        borderColor: [
-          "rgba(255,99,132,1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-        ],
-        
         labels: [],
         datasets: [
           {
@@ -50,7 +43,6 @@ export default {
     },
   },
   mounted() {
-    this.loaded = false;
     const todoRef = firebase.database().ref("todo");
     todoRef.on("value", (snapshot) => {
       var todos = snapshot.val();
@@ -60,27 +52,30 @@ export default {
         var cat = value.category;
         categoryArr.push(cat);
       }
-      console.log(categoryArr);
+      //console.log(categoryArr);
       const category = {};
       categoryArr.forEach((x) => {
         category[x] = (category[x] || 0) + 1;
       });
-      console.log(category);
+      //console.log(category);
       var catKey = [];
       for (let key of Object.keys(category)) {
         catKey.push(key);
       }
       this.chartData.labels = catKey;
       this.chartData.datasets[0].backgroundColor= catKey;
-      console.log(catKey);
+      //console.log(catKey);
       var catCount = [];
       for (let value of Object.values(category)) {
         catCount.push(value);
       }
-      console.log(catCount);
+      //console.log(catCount);
       this.chartData.datasets[0].data = catCount;
+      this.loaded = true;
+      // this.$nextTick(function(){
+      //   this.$forceUpdate();
+      // })
     });
-    this.loaded = true;
   },
 };
 </script>
