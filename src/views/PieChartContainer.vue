@@ -54,7 +54,9 @@ export default {
                 catCount.push(value);
             }
             console.log(catCount);
+            //this.chartData = catCount;
         });
+        
         this.loaded = true;
     } catch (e) {
       console.error(e)
