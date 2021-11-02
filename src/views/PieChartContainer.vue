@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="background-color:rgba(197, 227, 77)">
+  <div class="container" style="background-color: rgba(197, 227, 77)">
     <h3>Pie Chart</h3>
     <pie-chart
       v-if="loaded"
@@ -29,10 +29,10 @@ export default {
       },
     };
   },
-  methods:{
+  methods: {
     forceRerender() {
       this.componentKey += 1;
-    }
+    },
   },
   computed: {
     chartData() {
@@ -42,7 +42,7 @@ export default {
         datasets: [
           {
             label: "data one",
-            backgroundColor:[],
+            backgroundColor: [],
             data: null,
           },
         ],
@@ -70,7 +70,7 @@ export default {
         catKey.push(key);
       }
       this.chartData.labels = catKey;
-      this.chartData.datasets[0].backgroundColor= catKey;
+      this.chartData.datasets[0].backgroundColor = catKey;
       //console.log(catKey);
       var catCount = [];
       for (let value of Object.values(category)) {

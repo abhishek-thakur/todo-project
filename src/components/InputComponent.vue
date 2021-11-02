@@ -34,8 +34,8 @@
                 </task-component>
             </tbody>
         </table>
-        <!-- <bar-graph></bar-graph> -->
-        <pie-chart-container></pie-chart-container>
+        <pie-chart-container class="mt-5"></pie-chart-container>
+        <bar-graph-component class="mt-5"></bar-graph-component>
     </div>
 </template>
 
@@ -43,6 +43,7 @@
 import TaskComponent from '../views/TaskComponent.vue'
 import firebase from '@/firebaseApi.js'
 import PieChartContainer from '../views/PieChartContainer.vue'
+import BarGraphComponent from '../views/BarGraphComponent.vue'
 //import BarGraph from '../views/BarGraph.vue'
 
 export default {
@@ -50,6 +51,7 @@ export default {
     components:{
         TaskComponent,
         PieChartContainer,
+        BarGraphComponent,
         
     },
     data(){

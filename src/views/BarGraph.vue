@@ -1,20 +1,26 @@
-<template>
-    <button class="btn btn-Success" @click="showBar">Bar Graph</button>
-</template>
 <script>
-import { Bar } from 'vue-chartjs'
+import { Bar } from "vue-chartjs";
 
 export default {
-    name:'BarGraph',
-    props:['data','options'],
-    extends: Bar,
-    methods:{
-        showBar(){
-            this.renderChart(data, options)
-        }
+  extends: Bar,
+  name: "BarGraph",
+  props: {
+    graphdata: {
+      type: Object,
+      default: null,
     },
-    // mounted () {
-    //     this.renderChart(data, options)
-    // }
-}
+    options: {
+      type: Object,
+      default: null,
+    },
+  },
+  methods: {
+    showBar() {
+      this.renderChart(this.graphdata, this.options);
+    },
+  },
+  // mounted () {
+  //     this.renderChart(data, options)
+  // }
+};
 </script>
