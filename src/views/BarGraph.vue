@@ -14,13 +14,8 @@ export default {
       default: null,
     },
   },
-  methods: {
-    showBar() {
+  mounted () {
       this.renderChart(this.graphdata, this.options);
-    },
-  },
-  // mounted () {
-  //     this.renderChart(data, options)
-  // }
+  }
 };
 </script>
